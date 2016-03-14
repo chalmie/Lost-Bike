@@ -1,4 +1,4 @@
-var Journal = require('./../js/journal.js').Journal;
+var Journal = require('./../js/journal.js').JournalModule;
 var moment = require('moment');
 var now = moment().format('MMMM Do YYYY, h:mm:ss a');
 // jquery
