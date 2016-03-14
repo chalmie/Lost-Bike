@@ -1,5 +1,6 @@
-var journalConstruct = require('./../js/journal.js').journalProperty;
-
+var Journal = require('./../js/journal.js').Journal;
+var moment = require('moment');
+var now = moment().format('MMMM Do YYYY, h:mm:ss a');
 // jquery
 
 $(document).ready(function() {
@@ -8,9 +9,11 @@ $(document).ready(function() {
     var nombre = $("#nombre").val();
     var subject = $("#subject").val();
     var writing = $("#writing").val();
-    var newJournal = new journalConstruct(nombre, subject, writing);
+    var newJournal = new Journal(nombre, subject, writing);
 
-    $('.journal-output').append("<p>" + newJournal.nombre + "</p>" + "<p>" + newJournal.subject + "</p>" + "<p>" + newJournal.writing + "</p>");
+
+    $('.journal-output').append("<p>" + newJournal.nombre + "</p>" + "<p>" + newJournal.subject + "</p>" + "<p>" + newJournal.writing + "</p><p>Word Count: " + newJournal.wordCount() + " " + now + "</p>");
+
   });
 });
 
