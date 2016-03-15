@@ -1,0 +1,23 @@
+{
+  "name": "journal",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "blair and jason"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jwuerch/Day51-Node",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "bootstrap": "^3.3.6",
+    "moment": "^2.12.0"
+  }
+}

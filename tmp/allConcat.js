@@ -1,26 +1,27 @@
-var Journal = require('./../js/journal.js').Journal;
-var moment = require('moment');
-var now = moment().format('MMMM Do YYYY, h:mm:ss a');
-// jquery
+
+
+var AlarmTime = require('./../js/alarm.js').AlarmModule;
 
 $(document).ready(function() {
-  $("#entry").submit(function(event) {
+
+
+  $('.enterTime').submit(function(event){
     event.preventDefault();
-    var nombre = $("#nombre").val();
-    var subject = $("#subject").val();
-    var writing = $("#writing").val();
-    var newJournal = new Journal(nombre, subject, writing);
 
-
-    $('.journal-output').append("<p>" + newJournal.nombre + "</p>" + "<p>" + newJournal.subject + "</p>" + "<p>" + newJournal.writing + "</p><p>Word Count: " + newJournal.wordCount() + " " + now + "</p>");
-
+    setInterval(function() {
+      var time = moment().format('HH:mm');
+      $('#time').html(time);
+    }, 60000);
+    var firstName = $('#firstName').val();
+    var alarmTime = $('#alarm-time').val();
+    var newAlarm = new AlarmTime(firstName, alarmTime);
+    $('.display-area').append(newAlarm.firstName + "<p></p>");
+    $('.display-area').append(newAlarm.alarmTime);
+    $('.display-alarm').append(alarmTime);
+    console.log(newAlarm.alarmTime);
+    newAlarm.setRing(newAlarm.alarmTime);
   });
-});
 
-$(document).ready(function() {
-  $('#email').submit(function(event) {
-    event.preventDefault();
-    var email = $('#user-email').val();
-    $('.email-update').append('<p>Your email ' + email + 'has been added to our email list</p>');
-  });
+  // newAlarm.setRing(time, enterTime)
+
 });

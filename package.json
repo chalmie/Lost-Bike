@@ -1,13 +1,14 @@
 {
   "name": "journal",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "moment": "^2.12.0",
     "prompt": "^1.0.0"
   },
   "devDependencies": {
+    "bower-files": "^3.11.3",
+    "browser-sync": "^2.11.1",
     "browserify": "^13.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
@@ -22,5 +23,14 @@
     "test": "mocha"
   },
   "author": "blair and jason",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwuerch/Day51-Node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jwuerch/Day51-Node/issues"
+  },
+  "homepage": "https://github.com/jwuerch/Day51-Node#readme",
+  "description": ""
 }
