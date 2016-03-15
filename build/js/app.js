@@ -1,58 +1,23 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
-
-var AlarmTime = function(firstName, alarmTime) {
-    this.firstName = firstName;
-    this.alarmTime = alarmTime;
-};
-
-AlarmTime.prototype.setRing = function(alarmTime) {
-
-  var array = [];
-  setInterval(function() {
-    var startingTime = moment().format('HH:mm');
-    if (startingTime === alarmTime) {
-      alert("Time to Wake Up!");
-    }
-    console.log(startingTime);
-  }, 60000);
-}
-
-
-
-
-exports.AlarmModule = AlarmTime;
+exports.apiKey = "0e404428b2e31642da194fe9789dc39a";
 
 },{}],2:[function(require,module,exports){
 
 
-var AlarmTime = require('./../js/alarm.js').AlarmModule;
+var apiKey = require('./../.env').apiKey;
 
 $(document).ready(function() {
-  setInterval(function() {
-    var time = moment().format('HH:mm');
-    $('#time').html(time);
-  }, 1000);
 
-  $('.enterTime').submit(function(event){
-    event.preventDefault();
-
-    setInterval(function() {
-      var time = moment().format('HH:mm');
-    }, 1000);
-    var firstName = $('#firstName').val();
-    var alarmTime = $('#alarm-time').val();
-    console.log( alarmTime);
-    var newAlarm = new AlarmTime(firstName, alarmTime);
-    $('.display-area').append(newAlarm.firstName + "<p></p>");
-    $('.display-area').append(newAlarm.alarmTime);
-    $('.display-alarm').append(alarmTime);
-    console.log(newAlarm.alarmTime);
-    newAlarm.setRing(newAlarm.alarmTime);
+  $('#weatherLocation').click(function() {
+    var city = $('#location').val();
+    $('#location').val("");
+    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey).then(function(response) {
+      $('.showWeather').text("The humidity in " + city + " " + response.weather[0].description + " is " + response.main.humidity + "%");
+      console.log(response);
+    }).fail(function(error) {
+      $('.showWeather').text(error.responseJSON.message);
+    });
   });
-
-  // newAlarm.setRing(time, enterTime)
-
 });
 
-},{"./../js/alarm.js":1}]},{},[2]);
+},{"./../.env":1}]},{},[2]);
