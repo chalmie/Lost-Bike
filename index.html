@@ -2,7 +2,9 @@
   <head>
     <link rel="stylesheet" href="build/css/vendor.css">
     <link rel="stylesheet" href="build/css/styles.css">
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script src="build/js/vendor.min.js"></script>
+    <script src="bower_components/jQuery-Pagination-Plugin/js/jquery.yzePagination.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
     <title>Bikes</title>
   </head>
@@ -52,8 +54,13 @@
     </div><!-- FINISH COVER -->
 
     <div class="container">
+
       <div class="row" style="border:1px solid #000;height:800px;width:max;">
-        <div id="display-results" class="col-sm-12">
+
+        <div id="display-results" class="col-sm-6">
+        </div>
+        <div id="display-results" class="col-sm-6">
+          <div id="googleMap" style="width:500px;height:380px;"></div>
         </div>
       </div>
     </div>
