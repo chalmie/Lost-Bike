@@ -1,4 +1,12 @@
-$gray : #d3d3d3;
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+$gray : #fff;
 $green : #75B975;
 
 .box {
@@ -11,4 +19,58 @@ $green : #75B975;
     background: $green;
     color: white;
   }
+}
+
+header {
+
+    height:50px;
+}
+
+.navbar {
+    background:$gray;
+    border:none;
+}
+
+div.container-fluid.row-1-wrap {
+  padding: 0px;
+}
+
+.cover {
+  background-image: url("bike_header.jpg") !important;
+  height: 500px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  /*border: 2px solid green;*/
+}
+
+.flex-form-wrap {
+  background-color:rgba(0, 0, 0, 0.48);
+  width:600px;
+  height:100px;
+}
+
+h1 {
+  color:#fff;
+}
+
+.search-wrap {
+  text-align:center;
+}
+
+.search-form {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.actual-search {
+  width:300px;
 }
