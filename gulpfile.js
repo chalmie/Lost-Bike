@@ -19,6 +19,8 @@ var lib = require('bower-files')({
     }
   }
 });
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 
 
 
@@ -41,13 +43,14 @@ gulp.task('minifyScripts', ['jsBrowserify'], function() {
   .pipe(gulp.dest("./build/js"));
 });
 
-gulp.task("build", ['clean'], function() {
+gulp.task('build', ['clean'], function(){
   if (buildProduction) {
-    gulp.start("minifyScripts");
+    gulp.start('minifyScripts');
   } else {
     gulp.start('jsBrowserify');
   }
   gulp.start('bower');
+  gulp.start('cssBuild');
 });
 
 gulp.task('clean', function() {
@@ -83,6 +86,7 @@ gulp.task('serve', function() {
   gulp.watch(['js/*.js'], ['jsBuild']);
   gulp.watch(['bower.json'], ['bowerBuild']);
   gulp.watch(['*.html'], ['htmlBuild']);
+  gulp.watch(["scss/*.scss"], ['cssBuild']);
 });
 
 gulp.task('htmlBuild', function() {
@@ -97,5 +101,15 @@ gulp.task('bowerBuild', ['bower'], function(){
 });
 
 gulp.task('bower', ['bowerJS', 'bowerCSS']);
+
+gulp.task('cssBuild', function() {
+  return gulp.src('scss/*.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./build/css'))
+    .pipe(browserSync.stream());
+});
+
 
 gulp.task('default', ['serve']);
